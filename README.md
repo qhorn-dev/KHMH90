@@ -286,12 +286,7 @@ The code outputs:
 
 Production term associated with mean gradients in separation space:
 
-$$
-P_{\delta}
-=
-- \delta u_i \, \delta u_j \,
-\frac{\partial \overline{\delta U_i}}{\partial r_j}
-$$
+$$ P_{\delta} = - \delta u_i \, \delta u_j \, \frac{\partial \overline{\delta U_i}}{\partial r_j} $$
 
 Resolved subterms:
 
@@ -304,22 +299,13 @@ Resolved subterms:
 
 and their sum:
 
-$$
-P_{\delta}
-=
-P_{\delta,111}+P_{\delta,121}+P_{\delta,212}+P_{\delta,222}+P_{\delta,313}+P_{\delta,323}
-$$
+$$ P_{\delta} = P_{\delta,111}+P_{\delta,121}+P_{\delta,212}+P_{\delta,222}+P_{\delta,313}+P_{\delta,323} $$
 
 ### `calc_px`
 
 Production term associated with gradients in center coordinates:
 
-$$
-P_X
-=
-- \delta u_i \, U_{X,j} \,
-\frac{\partial \overline{\delta U_i}}{\partial X_j}
-$$
+$$ P_X = - \delta u_i \, U_{X,j} \, \frac{\partial \overline{\delta U_i}}{\partial X_j} $$
 
 Resolved subterms:
 
@@ -332,11 +318,7 @@ Resolved subterms:
 
 and their sum:
 
-$$
-P_X
-=
-P_{X,111}+P_{X,121}+P_{X,212}+P_{X,222}+P_{X,313}+P_{X,323}
-$$
+$$ P_X = P_{X,111}+P_{X,121}+P_{X,212}+P_{X,222}+P_{X,313}+P_{X,323} $$
 
 ## Outputs
 
@@ -377,3 +359,4 @@ ncdump -h s2_output.nc
 ```
 
 5. then increase the number of runs and the separation range
+
