@@ -1,0 +1,28 @@
+&sf
+  input_prefix = 'inputs/2bars_P1_run'
+  input_suffix = '.nc'
+  stats_file = 'inputs/2bars_P1_stats.nc'
+  output_file = 's2_output.nc'
+
+  run_start = 1
+  run_end = 1
+
+  r_min_x_pts = 1
+  r_max_x_pts = -1
+  r_step_x_pts = 1
+
+  r_min_y_pts = 1
+  r_max_y_pts = -1
+  r_step_y_pts = 1
+
+  time_block_size = 16
+  nthreads = 0
+
+  all_terms = .false.
+  calc_sf = .true.
+  calc_linear_transport = .true.
+  calc_interscale_transfer = .true.
+  calc_interspace_transfer = .false.
+  calc_pdelta = .false.
+  calc_px = .false.
+/
