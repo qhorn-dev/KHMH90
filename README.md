@@ -45,7 +45,7 @@ Example:
 nthreads = 8
 ```
 
-If `nthreads = 0`, OpenMP uses its default behavior. You can also still use the environment:
+If `nthreads = 0`, OpenMP uses its default behavior which is usueally set by the environment variable:
 
 ```bash
 export OMP_NUM_THREADS=8
@@ -54,7 +54,7 @@ export OMP_NUM_THREADS=8
 
 ## Configuration
 
-Configuration is handled in [s2_config.nml](/home/qhorn/Documents/KHMH/config/s2_config.nml).
+Configuration is handled in [s2_config.nml](config/s2_config.nml).
 
 Example:
 
@@ -136,6 +136,8 @@ A larger value means:
 
 - fewer I/O calls
 - more memory usage
+
+That's why this value has to be adapted to the RAM you have. You can for example proceed with `time_block_size=100` and lower it if you get some out of memory issue.
 
 ### Threads
 
@@ -355,23 +357,3 @@ The code writes a NetCDF file containing:
   - `Pdelta`
   - `PX`
 
-## Recommended minimal workflow
-
-1. compile
-2. check [s2_config.nml](/home/qhorn/Documents/KHMH/config/s2_config.nml)
-3. run a short case:
-
-```fortran
-run_start = 1
-run_end = 1
-r_max_x_pts = 4
-r_max_y_pts = 4
-```
-
-4. inspect the output contents:
-
-```bash
-ncdump -h s2_output.nc
-```
-
-5. then increase the number of runs and the separation range
