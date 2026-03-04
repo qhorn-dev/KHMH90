@@ -28,7 +28,7 @@ The generated executable is:
 
 By default, the program reads:
 
-- the configuration file [s2_config.nml]
+- the configuration file [s2_config.nml](config/s2_config.nml)
 - the input NetCDF files specified in that configuration
 
 Basic run:
