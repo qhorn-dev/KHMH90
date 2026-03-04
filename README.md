@@ -102,7 +102,7 @@ Run file names are built as:
 input_prefix + NN + input_suffix
 ```
 
-with `NN` on 2 digits, for example `run01`, `run02`, etc.
+with `NN` on 2 digits, for example `01`, `02`, etc.
 
 ### Run range
 
