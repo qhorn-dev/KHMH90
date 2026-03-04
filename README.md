@@ -339,24 +339,5 @@ The code writes a NetCDF file containing:
   - `Pdelta`
   - `PX`
 
-## Recommended minimal workflow
 
-1. compile
-2. check [s2_config.nml](/home/qhorn/Documents/KHMH/config/s2_config.nml)
-3. run a short case:
-
-```fortran
-run_start = 1
-run_end = 1
-r_max_x_pts = 4
-r_max_y_pts = 4
-```
-
-4. inspect the output contents:
-
-```bash
-ncdump -h s2_output.nc
-```
-
-5. then increase the number of runs and the separation range
 
