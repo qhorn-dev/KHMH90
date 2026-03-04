@@ -5,7 +5,7 @@ Fortran code to compute structure functions and several KHMH budget terms from e
 ## Prerequisites
 
 - `cmake`
-- a Fortran compiler with Fortran 2008 support
+- a Fortran compiler (e.g. gfortran)
 - the `netcdf-fortran` library
 - optional: OpenMP
 
@@ -28,7 +28,7 @@ The generated executable is:
 
 By default, the program reads:
 
-- the configuration file [s2_config.nml](/home/qhorn/Documents/KHMH/config/s2_config.nml)
+- the configuration file [s2_config.nml]
 - the input NetCDF files specified in that configuration
 
 Basic run:
