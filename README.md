@@ -167,37 +167,37 @@ Convention:
 
 The code works with velocity fluctuations:
 
-\[
+$$
 u' = u - \overline{u}, \qquad
 v' = v - \overline{v}, \qquad
 w' = w - \overline{w}
-\]
+$$
 
 and with velocity increments between two points separated by `r_x` or `r_y`.
 
 For a separation in `x`:
 
-\[
+$$
 \delta u_x = u'(x+r_x,y,t)-u'(x,y,t)
-\]
-\[
+$$
+$$
 \delta u_y = v'(x+r_x,y,t)-v'(x,y,t)
-\]
-\[
+$$
+$$
 \delta u_z = w'(x+r_x,y,t)-w'(x,y,t)
-\]
+$$
 
 For a separation in `y`:
 
-\[
+$$
 \delta u_x = u'(x,y+r_y,t)-u'(x,y,t)
-\]
-\[
+$$
+$$
 \delta u_y = v'(x,y+r_y,t)-v'(x,y,t)
-\]
-\[
+$$
+$$
 \delta u_z = w'(x,y+r_y,t)-w'(x,y,t)
-\]
+$$
 
 The code produces:
 
@@ -210,42 +210,42 @@ Second- and third-order structure functions.
 
 For a separation in `x`, for example:
 
-\[
+$$
 S_{2,x}^{(u)}(r_x,y)=\left\langle (\delta u_x)^2 \right\rangle_{x,t}
-\]
-\[
+$$
+$$
 S_{3,x}^{(u)}(r_x,y)=\left\langle (\delta u_x)^3 \right\rangle_{x,t}
-\]
+$$
 
 and similarly for the `v` and `w` components.
 
 The code also outputs the versions averaged over the transverse coordinate:
 
-\[
+$$
 S_{2,x}^{(u)}(r_x)=\left\langle S_{2,x}^{(u)}(r_x,y) \right\rangle_y
-\]
-\[
+$$
+$$
 S_{3,x}^{(u)}(r_x)=\left\langle S_{3,x}^{(u)}(r_x,y) \right\rangle_y
-\]
+$$
 
 Similarly for `r_y`:
 
-\[
+$$
 S_{2,y}^{(u)}(r_y,x)=\left\langle (\delta u_x)^2 \right\rangle_{y,t}
-\]
-\[
+$$
+$$
 S_{3,y}^{(u)}(r_y,x)=\left\langle (\delta u_x)^3 \right\rangle_{y,t}
-\]
+$$
 
 ### `calc_linear_transport`
 
 Linear terms of the form:
 
-\[
+$$
 \overline{\mathbf{U}}_X \cdot \nabla_X |\delta \mathbf{u}|^2
 \qquad \text{and} \qquad
 \overline{\delta \mathbf{U}} \cdot \nabla_r |\delta \mathbf{u}|^2
-\]
+$$
 
 Associated output variables:
 
@@ -258,9 +258,9 @@ Associated output variables:
 
 Interscale transfer in separation space:
 
-\[
+$$
 \nabla_r \cdot \left( \delta \mathbf{u} \, |\delta \mathbf{u}|^2 \right)
-\]
+$$
 
 The code outputs:
 
@@ -272,9 +272,9 @@ The code outputs:
 
 Transport in physical center space:
 
-\[
+$$
 \nabla_X \cdot \left( \mathbf{U}_X \, |\delta \mathbf{u}|^2 \right)
-\]
+$$
 
 The code outputs:
 
@@ -286,12 +286,12 @@ The code outputs:
 
 Production term associated with mean gradients in separation space:
 
-\[
+$$
 P_{\delta}
 =
 - \delta u_i \, \delta u_j \,
 \frac{\partial \overline{\delta U_i}}{\partial r_j}
-\]
+$$
 
 Resolved subterms:
 
@@ -304,22 +304,22 @@ Resolved subterms:
 
 and their sum:
 
-\[
+$$
 P_{\delta}
 =
 P_{\delta,111}+P_{\delta,121}+P_{\delta,212}+P_{\delta,222}+P_{\delta,313}+P_{\delta,323}
-\]
+$$
 
 ### `calc_px`
 
 Production term associated with gradients in center coordinates:
 
-\[
+$$
 P_X
 =
 - \delta u_i \, U_{X,j} \,
 \frac{\partial \overline{\delta U_i}}{\partial X_j}
-\]
+$$
 
 Resolved subterms:
 
@@ -332,11 +332,11 @@ Resolved subterms:
 
 and their sum:
 
-\[
+$$
 P_X
 =
 P_{X,111}+P_{X,121}+P_{X,212}+P_{X,222}+P_{X,313}+P_{X,323}
-\]
+$$
 
 ## Outputs
 
@@ -357,3 +357,23 @@ The code writes a NetCDF file containing:
   - `Pdelta`
   - `PX`
 
+## Recommended minimal workflow
+
+1. compile
+2. check [s2_config.nml](/home/qhorn/Documents/KHMH/config/s2_config.nml)
+3. run a short case:
+
+```fortran
+run_start = 1
+run_end = 1
+r_max_x_pts = 4
+r_max_y_pts = 4
+```
+
+4. inspect the output contents:
+
+```bash
+ncdump -h s2_output.nc
+```
+
+5. then increase the number of runs and the separation range
